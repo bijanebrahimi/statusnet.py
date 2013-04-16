@@ -16,48 +16,35 @@
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-"""
-Standard build script.
-"""
-
-__docformat__ = 'restructuredtext'
-
-import distutils
-from setuptools import setup, find_packages
-
-try:
-    distutils.dir_util.remove_tree("build", "dist", "src/identicurse.egg-info")
-except:
-    pass
+from distutils.core import setup
 
 setup(
-    name="identicurse",
-    version='0.10-dev',
-    description="A simple Identi.ca client with a curses-based UI.",
-    long_description=("A simple Identi.ca client with a curses-based UI."),
-    author="Psychedelic Squid and Reality",
-    author_email='psquid@psquid.net and tinmachin3@gmail.com',
-    url="http://identicurse.net/",
-    download_url=("http://identicurse.net/release/"),
+    name = 'statusnet',
+    py_modules = ['statusnet'],
+    version = '0.1.0-dev',
     install_requires=[
-        "statusnet >= 0.1, <= 0.2",
+        "oauth >= 1.0.1",
         ],
 
-    license="GPLv3+",
+    author = "Psychedelic Squid and Reality",
+    author_email = '<psquid@psquid.net> and <tinmachin3@gmail.com>',
+    url = 'http://identicurse.net/',
 
-    data_files=[('identicurse',['README', 'conf/config.json', 'conf/messages.json'])],
-    packages=find_packages('src'),
-    package_dir={'': 'src'},
-    include_package_data=True,
+    description = 'A StatusNet library for Python.',
+    long_description = """A StatusNet library for Python, used primarily by the
+CLI client *IdentiCurse*.
 
-    entry_points={
-        'console_scripts':
-            ['identicurse = identicurse:main'],
-    },
+This package is still in 0.x, expect breaking changes occasionally.""",
 
-    classifiers=[
-        'License :: OSI Approved :: GNU General Public License (GPL)',
-        'Development Status :: 5 - Production/Stable',
-        'Programming Language :: Python',
-    ],
-)
+    classifiers = [
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 2 :: Only", # TODO: Get to the point this can be removed.
+        "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+        "Operating System :: OS Independent",
+        "Development Status :: 4 - Beta",
+        "Intended Audience :: Developers",
+        "Topic :: Communications :: Chat",
+        "Topic :: Internet :: WWW/HTTP",
+        "Topic :: Software Development :: Libraries :: Python Modules"
+        ]
+    )
